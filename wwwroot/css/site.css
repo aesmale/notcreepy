@@ -1,1 +1,10 @@
 /*Write all of your CSS here*/
+
+.login-container {
+    display: inline-block;
+    width: 30%;
+}
+
+.sample-gallery {
+    display: inline-block;
+}
