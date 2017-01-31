@@ -6,21 +6,26 @@ using MySql.Data.MySqlClient;
 using notcreepy.Models;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Identity;
 namespace notcreepy.Factory
 {
     public class UserFactory : IFactory<User>
     {
         private string connectionString;
-        public UserFactory()
+        private readonly IOptions<MySqlOptions> mysqlConfig;
+
+        public UserFactory(IOptions<MySqlOptions> conf)
         {
-            connectionString = "server=localhost;userid=root;password=root;port=3306;database=mydb;SslMode=None";
+            mysqlConfig = conf;
         }
+
+
         internal IDbConnection Connection
         {
             get
-            {
-                return new MySqlConnection(connectionString);
+            {         
+                return new MySqlConnection(mysqlConfig.Value.ConnectionString);
             }
         }
 

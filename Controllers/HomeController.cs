@@ -15,6 +15,7 @@ namespace notcreepy.Controllers
         // private IHostingEnvironment hostingEnv;
      
         private readonly UserFactory userFactory;
+
         public HomeController(UserFactory user) {
             userFactory = user;
         }
@@ -25,7 +26,6 @@ namespace notcreepy.Controllers
         public IActionResult Index()
         {
             //We can call upon the methods of the userFactory directly now.
-            ViewBag.Users = userFactory.FindAll();
             return View();
         }
 
