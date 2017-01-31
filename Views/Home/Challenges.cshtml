@@ -1,0 +1,15 @@
+@Html.Partial("header")
+
+<h1>Challanges</h1>
+
+<form action="newchallange">
+    <p>Have a good idea for a Challange?</p>
+    <input type="submit" value="New Challange">
+</form>
+
+@{if(@ViewBag.challanges != null){
+        foreach(var challange in @ViewBag.challanges){
+            <p><a href="/challange/@challange.id">challange.name</a></p>
+        }
+    }
+}

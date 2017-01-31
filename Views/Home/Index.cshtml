@@ -3,3 +3,17 @@
 }
 <h1>Default Blank Page~</h1>
 <p>Get to adding stuff</p>
+
+<form asp-action="UploadFiles" 
+      asp-controller="Home" 
+      method="post"
+      enctype="multipart/form-data">
+    <input type="file" name="files" multiple />
+    <input type="submit" value="Upload Selected Files" />
+</form>
+
+<p>@ViewBag.Message</p>
+<p>@ViewBag.Photo</p>
+<img src="@ViewBag.Test" alt="Hi">
+<p>@ViewBag.fs</p>
+<p>@ViewBag.Test</p>

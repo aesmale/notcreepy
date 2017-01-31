@@ -4,6 +4,9 @@ using Dapper;
 using System.Data;
 using MySql.Data.MySqlClient;
 using notcreepy.Models;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+
 namespace notcreepy.Factory
 {
     public class UserFactory : IFactory<User>
@@ -11,19 +14,21 @@ namespace notcreepy.Factory
         private string connectionString;
         public UserFactory()
         {
-            connectionString = "server=localhost;userid=root;password=root;port=8889;database=mydb;SslMode=None";
+            connectionString = "server=localhost;userid=root;password=root;port=3306;database=mydb;SslMode=None";
         }
         internal IDbConnection Connection
         {
-            get {
+            get
+            {
                 return new MySqlConnection(connectionString);
             }
         }
 
-              public void Add(User item)
+        public void Add(User item)
         {
-            using (IDbConnection dbConnection = Connection) {
-                string query =  "INSERT INTO users (user_name, email, password, created_at, updated_at) VALUES (@Name, @Email, @Password, NOW(), NOW())";
+            using (IDbConnection dbConnection = Connection)
+            {
+                string query = "INSERT INTO users (user_name, email, password, created_at, updated_at) VALUES (@Name, @Email, @Password, NOW(), NOW())";
                 dbConnection.Open();
                 dbConnection.Execute(query, item);
             }
@@ -44,5 +49,22 @@ namespace notcreepy.Factory
                 return dbConnection.Query<User>("SELECT * FROM users WHERE id = @Id", new { Id = id }).FirstOrDefault();
             }
         }
+
+        public byte[] ConvertToBytes(IFormFile image)
+        {
+            byte[] CoverImageBytes = null;
+            BinaryReader reader = new BinaryReader(image.OpenReadStream());
+            CoverImageBytes = reader.ReadBytes((int)image.Length);
+            return CoverImageBytes;
+        }
+
+        
+        // public byte[] ConverToImage(btye[] image)
+        // {
+        //     IFormFile CoverImageBytes = null;
+        //     BinaryReader reader = new BinaryReader(image.OpenReadStream());
+        //     CoverImageBytes = reader.ReadBytes((int)image.Length);
+        //     return CoverImageBytes;
+        // }
     }
 }

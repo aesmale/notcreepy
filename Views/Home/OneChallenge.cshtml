@@ -1,0 +1,26 @@
+@Html.Partial("header")
+
+<h1>Challenge Name</h1>
+
+<form action="sort">
+    <select>
+    <option value="Most Recent">Most Recent</option>
+    <option value="Most Upvotes">Most Upvotes</option>
+    <option value="Most Downvotes">Most Downvotes</option>
+    </select>
+</form>
+
+<button>Challange a friend</button> 
+<!--this makes a modal pop up-->
+
+@{if(@ViewBag.challange != null){
+    foreach(var item in @ViewBag.challange){
+            <div class="challenge">
+                <img src="" alt="challange pic">
+                <p><a href="user_profile/{user.id}">Username</a></p>
+            </div>
+        }
+    }
+}
+
+

@@ -2,8 +2,9 @@ using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using notcreepy.Factory;
 
-namespace not_creepy
+namespace notcreepy
 {
     public class Startup
     {
@@ -13,6 +14,7 @@ namespace not_creepy
             // Add framework services.
             services.AddMvc();
             services.AddSession();
+            services.AddScoped<UserFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
