@@ -1,8 +1,19 @@
+@Html.Partial("header")
+
 @{
     ViewData["Title"] = "Home Page";
 }
+<h1>Default Blank Page~</h1>
+<p>Get to adding stuff</p>
 
-@Html.Partial("header")
+<form asp-action="UploadFiles" 
+      asp-controller="Home" 
+      method="post"
+      enctype="multipart/form-data">
+    <input type="file" name="files" multiple />
+    <input type="submit" value="Upload Selected Files" />
+</form>
+
 
 <div class="sample-gallery">
     <h2>Check Out Some Challenges<h2>

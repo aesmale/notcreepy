@@ -31,7 +31,6 @@ namespace notcreepy
             services.AddScoped<FollowshipFactory>();
             services.AddScoped<ChallengeFactory>();
             services.AddScoped<SubmissionFactory>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -28,27 +28,5 @@ namespace notcreepy.Factory
             }
         }
 
-        // public void Add_Submission(Submission item){
-        //         using (IDbConnection dbConnection = Connection) {
-        //         string query =  "INSERT INTO Submissions (follower_id, followee_id, created_at, updated_at) VALUES (@follower_id, @followee_id, NOW(), NOW())";
-        //         dbConnection.Open();
-        //         dbConnection.Execute(query, item);
-        //     }
-
-        // }
-        // public List<Submission> FindFollowersByUser(User item){
-        //     using (IDbConnection dbConnection = Connection)
-        //     {
-        //         dbConnection.Open();
-        //         string query = "SELECT * FROM Submissions WHERE followee_id = {item.id} LEFT JOIN users on Submissions.follower_id = id";
-        //         return dbConnection.Query<Submission, User, Submission>(query, (Submission, user) =>{
-        //             Submission.follower = user;
-        //             Submission.followee = item;
-        //             return Submission;
-        //         }).ToList();
-        //     }  
-        // }
-
-
     }
 }
