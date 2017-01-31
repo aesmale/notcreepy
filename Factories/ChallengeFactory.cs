@@ -8,12 +8,12 @@ using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity;
 namespace notcreepy.Factory
 {
-    public class UserFactory : IFactory<User>
+    public class ChallengeFactory : IFactory<Challenge>
     {
         private string connectionString;
         private readonly IOptions<MySqlOptions> mysqlConfig;
 
-        public UserFactory(IOptions<MySqlOptions> conf)
+        public ChallengeFactory(IOptions<MySqlOptions> conf)
         {
             mysqlConfig = conf;
         }
@@ -27,31 +27,28 @@ namespace notcreepy.Factory
             }
         }
 
-
-
-        public void Add(User item)
+              public void Add(Challenge item)
         {
-            using (IDbConnection dbConnection = Connection)
-            {
-                string query = "INSERT INTO users (user_name, email, password, created_at, updated_at) VALUES (@Name, @Email, @Password, NOW(), NOW())";
+            using (IDbConnection dbConnection = Connection) {
+                string query =  "INSERT INTO challenges (name, created_at, updated_at) VALUES (@name, NOW(), NOW())";
                 dbConnection.Open();
                 dbConnection.Execute(query, item);
             }
         }
-        public IEnumerable<User> FindAll()
+        public IEnumerable<Challenge> FindAll()
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<User>("SELECT * FROM users");
+                return dbConnection.Query<Challenge>("SELECT * FROM challenges");
             }
         }
-        public User FindByID(int id)
+        public Challenge FindByID(int id)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<User>("SELECT * FROM users WHERE id = @Id", new { Id = id }).FirstOrDefault();
+                return dbConnection.Query<Challenge>("SELECT * FROM challenges WHERE id = @Id", new { Id = id }).FirstOrDefault();
             }
         }
     }

@@ -7,8 +7,8 @@ namespace notcreepy.Models
     {
         public void submission()
         {
-            upvote = 0;
-            downvote = 0;
+            upvotes = 0;
+            downvotes = 0;
 
         }
         [Key]
@@ -25,9 +25,9 @@ namespace notcreepy.Models
         [RequiredAttribute]
         public string image { get; set; }
 
-        public int upvote { get; set; }
+        public int upvotes { get; set; }
 
-        public int downvote { get; set; }
+        public int downvotes { get; set; }
     }
 
 }

@@ -12,7 +12,6 @@ namespace notcreepy.Controllers
         {
             //Instantiate a UserFactory object that is immutable (READONLY)
             //This is establish the initial DB connection for us.
-            userFactory = new UserFactory();
         }
         // GET: /Home/
         [HttpGet]
@@ -20,7 +19,6 @@ namespace notcreepy.Controllers
         public IActionResult Index()
         {
             //We can call upon the methods of the userFactory directly now.
-            ViewBag.Users = userFactory.FindAll();
             return View();
         }
     }
