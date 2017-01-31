@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 namespace notcreepy.Models
 {
@@ -5,14 +6,15 @@ namespace notcreepy.Models
  public class User : BaseEntity
  {
   [Key]
-  public long Id { get; set; }
-  [Required]
-  [MinLength(3)]
-  public string Name { get; set; }
+  public long id { get; set; }
+  [RequiredAttribute]
+  [MinLengthAttribute(5)]
+  public string username {get; set;}
   [Required]
   [EmailAddress]
-  public string Email { get; set; }
+  public string email { get; set; }
   [Required]
-  public string Password { get; set; }
+  [MinLengthAttribute(8)]
+  public string password { get; set; }
  }
 }

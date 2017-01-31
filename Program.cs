@@ -1,7 +1,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace not_creepy
+namespace notcreepy
 {
     public class Program
     {
