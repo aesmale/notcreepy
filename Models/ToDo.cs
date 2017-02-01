@@ -3,21 +3,22 @@ namespace notcreepy.Models
 {
 
 
-    public class Submission : BaseEntity
+    public class ToDo : BaseEntity
     {
         [Key]
         public long id { get; set; }
 
         [Key]
         [RequiredAttribute]
-        public long user_id { get; set; }
+        public long challenge_id { get; set; }
 
         [Key]
         [RequiredAttribute]
-        public long challenge_id { get; set; }
+        public long challenger_id { get; set; }
 
+        [Key]
         [RequiredAttribute]
-        public string image { get; set; }
+        public long challengee_id { get; set; }
 
     }
 

@@ -30,6 +30,8 @@ namespace notcreepy
             services.AddScoped<UserFactory>();
             services.AddScoped<FollowshipFactory>();
             services.AddScoped<ChallengeFactory>();
+                        services.AddScoped<ToDoFactory>();
+
             services.AddScoped<SubmissionFactory>();
         }
 

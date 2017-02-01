@@ -3,7 +3,6 @@ using System.Linq;
 using Dapper;
 using System.Data;
 using MySql.Data.MySqlClient;
-using notcreepy.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity;
 using notcreepy.Models;
@@ -11,7 +10,6 @@ namespace notcreepy.Factory
 {
     public class SubmissionFactory : IFactory<Submission>
     {
-        private string connectionString;
         private readonly IOptions<MySqlOptions> mysqlConfig;
 
         public SubmissionFactory(IOptions<MySqlOptions> conf)
@@ -32,7 +30,7 @@ namespace notcreepy.Factory
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string query = "INSERT INTO submissions (user_id, challenge_id, image, upvotes, downvotes, created_at, updated_at) VALUES (@user_id, @challenge_id, @upvotes, @downvotes, NOW(), NOW())";
+                string query = "INSERT INTO submissions (user_id, challenge_id, image, upvotes, downvotes, created_at, updated_at) VALUES (@user_id, @challenge_id, 0, 0, NOW(), NOW())";
                 dbConnection.Open();
                 dbConnection.Execute(query, item);
             }

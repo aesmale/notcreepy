@@ -12,7 +12,6 @@ namespace notcreepy.Factory
 {
     public class UserFactory : IFactory<User>
     {
-        private string connectionString;
         private readonly IOptions<MySqlOptions> mysqlConfig;
 
         public UserFactory(IOptions<MySqlOptions> conf)
@@ -33,7 +32,7 @@ namespace notcreepy.Factory
         {
             using (IDbConnection dbConnection = Connection)
             {
-                string query = "INSERT INTO users (user_name, email, password, created_at, updated_at) VALUES (@Name, @Email, @Password, NOW(), NOW())";
+                string query = "INSERT INTO users (username, email, password, admin, created_at, updated_at) VALUES (@Name, @Email, @Password, 0, NOW(), NOW())";
                 dbConnection.Open();
                 dbConnection.Execute(query, item);
             }
@@ -46,12 +45,33 @@ namespace notcreepy.Factory
                 return dbConnection.Query<User>("SELECT * FROM users");
             }
         }
+
+        public IEnumerable<User> FindAllAdmins(){
+                        using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                return dbConnection.Query<User>("SELECT * FROM users WHERE admin = 1");
+            }
+        }
+
+
         public User FindByID(int id)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<User>("SELECT * FROM users WHERE id = @Id", new { Id = id }).FirstOrDefault();
+                return dbConnection.Query<User>("SELECT * FROM users WHERE id = @id", new { Id = id }).FirstOrDefault();
+            }
+        }
+
+
+
+                public User FindByEmail(string email)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                return dbConnection.Query<User>("SELECT * FROM users WHERE email = @email", new { email = email }).FirstOrDefault();
             }
         }
 

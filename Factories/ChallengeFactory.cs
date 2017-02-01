@@ -10,7 +10,6 @@ namespace notcreepy.Factory
 {
     public class ChallengeFactory : IFactory<Challenge>
     {
-        private string connectionString;
         private readonly IOptions<MySqlOptions> mysqlConfig;
 
         public ChallengeFactory(IOptions<MySqlOptions> conf)
