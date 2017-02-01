@@ -199,9 +199,11 @@
 /Users/amber/Documents/CodingDojo_CSharp/not_creepy/Factories/FollowshipFactory.cs
 /Users/amber/Documents/CodingDojo_CSharp/not_creepy/Factories/IFactory.cs
 /Users/amber/Documents/CodingDojo_CSharp/not_creepy/Factories/SubmissionFactory.cs
+/Users/amber/Documents/CodingDojo_CSharp/not_creepy/Factories/ToDoFactory.cs
 /Users/amber/Documents/CodingDojo_CSharp/not_creepy/Factories/UserFactory.cs
 /Users/amber/Documents/CodingDojo_CSharp/not_creepy/Models/Challenge.cs
 /Users/amber/Documents/CodingDojo_CSharp/not_creepy/Models/Followship.cs
 /Users/amber/Documents/CodingDojo_CSharp/not_creepy/Models/Submission.cs
+/Users/amber/Documents/CodingDojo_CSharp/not_creepy/Models/ToDo.cs
 /Users/amber/Documents/CodingDojo_CSharp/not_creepy/Models/User.cs
 /Users/amber/Documents/CodingDojo_CSharp/not_creepy/Properties/MySqlOptions.cs

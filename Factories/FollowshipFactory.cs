@@ -10,7 +10,6 @@ namespace notcreepy.Factory
 {
     public class FollowshipFactory : IFactory<Followship>
     {
-        private string connectionString;
         private readonly IOptions<MySqlOptions> mysqlConfig;
 
         public FollowshipFactory(IOptions<MySqlOptions> conf)
