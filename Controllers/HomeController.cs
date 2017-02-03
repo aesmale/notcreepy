@@ -65,7 +65,7 @@ namespace notcreepy.Controllers
         [HttpPostAttribute]
         [ValidateAntiForgeryTokenAttribute]
         [RouteAttribute("register")]
-        public IActionResult Register(User item){
+        public IActionResult RegisterMethod(User item){
             if(ModelState.IsValid){
                 userFactory.Add(item);
                 User user = userFactory.FindByEmail(item.email);
@@ -74,6 +74,13 @@ namespace notcreepy.Controllers
             }
             ViewBag.registererrors = ModelState.Values;
         return View("Index");
+        }
+
+
+        [HttpGetAttribute]
+        [RouteAttribute("register")]
+        public IActionResult register(){
+            return View("Register");
         }
 
 
